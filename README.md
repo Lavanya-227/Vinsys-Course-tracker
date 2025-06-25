@@ -1,6 +1,6 @@
 # Vinsys Course tracker
 
-##Description: 
+## Description: 
 A web app to track learner progress in VINSYS’s training courses.
 
 ## Features:
@@ -10,7 +10,7 @@ A web app to track learner progress in VINSYS’s training courses.
 -	User authentication.
 -	PDF progress reports.
 
-##AWS Services:
+## AWS Services:
 -	S3: Host React frontend (static site) and store PDF reports.
 -	Lambda: Serverless APIs for progress tracking.
 -	API Gateway: API routing.
