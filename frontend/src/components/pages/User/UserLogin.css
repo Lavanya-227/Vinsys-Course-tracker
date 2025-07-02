@@ -1,0 +1,122 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f6f8fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.form-container {
+  background-color: #ffffff;
+  padding: 50px; /* Increased padding */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 550px; /* --- CHANGE MADE HERE: INCREASED WIDTH --- */
+  text-align: center;
+}
+
+.form-container h2 {
+  font-size: 28px; /* Slightly larger font for a wider form */
+  font-weight: 600;
+  margin-bottom: 35px;
+  color: #333;
+  text-align: left;
+}
+
+.form-group {
+  text-align: left;
+  margin-bottom: 25px; /* Increased margin for better spacing */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #555;
+  font-size: 16px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 15px 18px; /* Increased padding */
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 17px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #008cba;
+  box-shadow: 0 0 0 2px rgba(0, 140, 186, 0.2);
+}
+
+.forgot-password-link {
+  text-align: right;
+  margin-top: -15px;
+  margin-bottom: 25px;
+}
+
+.forgot-password-link a {
+  color: #008cba;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.forgot-password-link a:hover {
+  text-decoration: underline;
+}
+
+.login-button {
+  width: 100%;
+  padding: 18px; /* Increased padding for a larger button */
+  background-color: #008cba;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  margin-top: 15px;
+}
+
+.login-button:hover {
+  background-color: #007799;
+}
+
+.login-button:active {
+  transform: scale(0.99);
+}
+
+.switch-text {
+  font-size: 15px;
+  color: #777;
+  margin-top: 40px;
+}
+
+.switch-text a {
+  color: #008cba;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.switch-text a:hover {
+  text-decoration: underline;
+}
