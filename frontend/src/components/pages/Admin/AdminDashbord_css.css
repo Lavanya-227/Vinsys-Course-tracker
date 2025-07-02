@@ -1,0 +1,486 @@
+/* --- CSS Variables for Global Styling (Consistent across app) --- */
+:root {
+    --primary-color: #667EEA; /* A modern blue-purple */
+    --primary-dark: #5A67D8; /* Darker shade for hover states */
+    --secondary-color: #48BB78; /* Green for success/accent */
+    --accent-color: #F6AD55; /* Orange for warnings/attention */
+    --text-color: #2D3748; /* Dark grey for main text */
+    --light-text-color: #718096; /* Lighter grey for secondary text */
+    --background-light: #F7FAFC; /* Very light grey background */
+    --background-dark: #EDF2F7; /* Slightly darker grey for contrast elements */
+    --card-background: #FFFFFF; /* White for cards */
+    --border-color: #E2E8F0; /* Light grey for borders */
+    --shadow-light: rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    --shadow-medium: rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+
+    /* Status Colors (reused from user dashboard) */
+    --status-active: #48BB78; /* Green for active */
+    --status-pending: #F6AD55; /* Orange for pending */
+    --status-completed: #28a745;
+    --status-in-progress: #007bff;
+    --status-not-started: #6c757d;
+
+    /* Typography */
+    --font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --heading-font-weight: 700;
+    --subheading-font-weight: 600;
+}
+
+/* --- Base Styles --- */
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-light);
+    color: var(--text-color);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Admin Dashboard Layout --- */
+.admin-dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- Admin Sidebar --- */
+.admin-sidebar {
+    width: 260px;
+    background-color: var(--card-background);
+    color: var(--text-color);
+    padding: 25px 20px;
+    box-shadow: 2px 0 15px var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out;
+    position: fixed; /* For mobile overlay */
+    height: 100%; /* For mobile overlay */
+    z-index: 1000; /* Ensure it's above other content */
+    transform: translateX(-100%); /* Hidden by default on mobile */
+}
+
+.admin-sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.app-title {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    font-weight: var(--heading-font-weight);
+    margin: 0;
+}
+
+.close-sidebar-btn {
+    display: none; /* Hidden by default, shown on mobile */
+    background: none;
+    border: none;
+    font-size: 2.2em;
+    color: var(--text-color);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    color: var(--light-text-color);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+    font-weight: 500;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    transform: translateX(5px);
+}
+
+.nav-icon {
+    margin-right: 15px;
+    font-size: 1.3em;
+}
+
+.logout-btn {
+    width: 100%;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    background: none;
+    margin-top: 20px;
+    color: var(--light-text-color);
+}
+
+.logout-btn:hover {
+    background-color: #dc3545; /* Red for logout hover */
+    color: var(--card-background);
+}
+
+/* --- Admin Main Content Area --- */
+.admin-main-content {
+    flex-grow: 1;
+    margin-left: 0; /* No margin-left by default for mobile */
+    transition: margin-left 0.3s ease-in-out;
+    padding: 30px;
+}
+
+/* --- Main Header --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    border: 1px solid var(--border-color);
+}
+
+.menu-toggle-btn {
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    color: var(--text-color);
+    display: block; /* Show on mobile */
+}
+
+.admin-info-header {
+    display: flex;
+    align-items: center;
+}
+
+.admin-name {
+    font-weight: var(--subheading-font-weight);
+    margin-right: 20px;
+    color: var(--text-color);
+    font-size: 1.1em;
+}
+
+.admin-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: var(--subheading-font-weight);
+    font-size: 1.2em;
+    box-shadow: 0 2px 5px var(--shadow-light);
+    flex-shrink: 0;
+}
+
+/* --- Main Area Content Sections --- */
+.main-area-content {
+    padding: 0;
+}
+
+.admin-section {
+    background-color: var(--card-background);
+    padding: 35px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 20px var(--shadow-light);
+    border: 1px solid var(--border-color);
+}
+
+.welcome-banner {
+    background-image: linear-gradient(to right top, #d1d8e0, #e0e5ed, #eff2f6, #f7f9fb, #ffffff);
+    color: var(--text-color);
+    text-align: center;
+    padding: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.section-title {
+    font-size: 2.5em;
+    font-weight: var(--heading-font-weight);
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.section-description {
+    font-size: 1.1em;
+    color: var(--light-text-color);
+    max-width: 700px;
+    margin: 0 auto 25px auto;
+}
+
+.section-subtitle {
+    font-size: 1.9em;
+    font-weight: var(--subheading-font-weight);
+    color: var(--text-color);
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+    display: inline-block;
+}
+
+/* --- Summary Cards --- */
+.summary-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.summary-card {
+    background-color: var(--background-dark);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px var(--shadow-light);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.summary-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+}
+
+.card-icon {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    line-height: 1; /* Ensure emoji/icon alignment */
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.card-value {
+    font-size: 2em;
+    font-weight: var(--heading-font-weight);
+    color: var(--text-color);
+    line-height: 1.2;
+}
+
+.card-label {
+    font-size: 0.95em;
+    color: var(--light-text-color);
+    font-weight: 500;
+}
+
+/* --- Table Styling --- */
+.activity-table-container,
+.course-table-container {
+    overflow-x: auto; /* Enable horizontal scrolling on small screens */
+    background-color: var(--background-dark);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: inset 0 1px 3px var(--shadow-light);
+}
+
+.activity-table,
+.course-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Ensure table doesn't get too squished */
+}
+
+.activity-table th,
+.course-table th,
+.activity-table td,
+.course-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.activity-table th,
+.course-table th {
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    font-weight: var(--subheading-font-weight);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: sticky; /* Sticky header for scrolling */
+    top: 0;
+    z-index: 1;
+}
+
+.activity-table tbody tr:last-child td,
+.course-table tbody tr:last-child td {
+    border-bottom: none; /* No border for the last row */
+}
+
+.activity-table tbody tr:hover,
+.course-table tbody tr:hover {
+    background-color: var(--background-light); /* Hover effect for rows */
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: var(--card-background);
+    text-transform: capitalize;
+}
+
+.status-active {
+    background-color: var(--status-active);
+}
+
+.status-pending {
+    background-color: var(--status-pending);
+}
+
+
+/* --- Media Queries for Responsiveness --- */
+
+/* For larger screens (desktops) */
+@media (min-width: 769px) {
+    .admin-sidebar {
+        position: static;
+        transform: translateX(0);
+    }
+
+    .admin-main-content {
+        margin-left: 260px;
+    }
+
+    .menu-toggle-btn {
+        display: none;
+    }
+
+    .close-sidebar-btn {
+        display: none;
+    }
+
+    .main-header {
+        justify-content: flex-end;
+        padding-left: 0;
+    }
+}
+
+/* For smaller screens (tablets and mobiles) */
+@media (max-width: 768px) {
+    .admin-sidebar {
+        width: 240px;
+        padding: 20px;
+    }
+
+    .close-sidebar-btn {
+        display: block;
+    }
+
+    .main-header {
+        justify-content: space-between;
+        padding: 15px 20px;
+    }
+
+    .admin-main-content {
+        padding: 20px;
+    }
+
+    .admin-section {
+        padding: 25px;
+        margin-bottom: 25px;
+    }
+
+    .section-title {
+        font-size: 2em;
+    }
+
+    .section-description {
+        font-size: 1em;
+    }
+
+    .section-subtitle {
+        font-size: 1.7em;
+        margin-bottom: 15px;
+    }
+
+    .summary-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjust for smaller cards */
+        gap: 15px;
+    }
+    .summary-card {
+        flex-direction: column; /* Stack icon and info vertically */
+        text-align: center;
+        gap: 10px;
+    }
+    .card-info {
+        align-items: center; /* Center text info */
+    }
+
+    /* Table styles for smaller screens */
+    .activity-table-container,
+    .course-table-container {
+        overflow-x: auto; /* Enable horizontal scroll */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+    .activity-table,
+    .course-table {
+        min-width: 600px; /* Keep minimum width to prevent squishing */
+    }
+}
+
+/* For very small screens (mobile landscape/small portrait) */
+@media (max-width: 480px) {
+    .admin-main-content {
+        padding: 15px;
+    }
+
+    .main-header {
+        padding: 10px 15px;
+        margin-bottom: 20px;
+    }
+
+    .admin-name {
+        font-size: 0.9em;
+        margin-right: 10px;
+    }
+
+    .admin-avatar {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1em;
+    }
+
+    .section-title {
+        font-size: 1.8em;
+    }
+
+    .section-subtitle {
+        font-size: 1.4em;
+    }
+
+    .summary-cards-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+
+    .summary-card {
+        flex-direction: row; /* Back to row layout if preferred, or keep column */
+        justify-content: flex-start;
+        text-align: left;
+    }
+}
