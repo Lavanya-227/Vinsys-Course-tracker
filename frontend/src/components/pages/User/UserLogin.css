@@ -1,122 +1,231 @@
+/* UserLogin.css - Improved Styling for Login/Form Pages (Good Size) */
+
+/* General Body Styles - Sets up the full page background and centers the form */
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f6f8fa;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+    margin: 0;
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', /* Prioritize Inter for a modern look */
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f0f4f8; /* A soft, calming light blue-grey background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    overflow: auto; /* Allow scrolling if content is taller than viewport */
+    padding: 20px; /* Add some padding to body for very small screens */
+    box-sizing: border-box; /* Include padding in element's total width and height */
 }
 
-.app-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+/* Login Page Wrapper - Replaces .app-container for clearer semantics */
+.login-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100%; /* Allows it to occupy height within body's flex context */
 }
 
+/* Form Container - The main white box for the form */
 .form-container {
-  background-color: #ffffff;
-  padding: 50px; /* Increased padding */
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  width: 100%;
-  max-width: 550px; /* --- CHANGE MADE HERE: INCREASED WIDTH --- */
-  text-align: center;
+    background-color: #ffffff;
+    padding: 60px; /* Increased padding for a more spacious and substantial feel */
+    border-radius: 18px; /* Slightly more rounded for a softer, modern look */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); /* Deeper, more elegant shadow for a premium feel */
+    width: 100%;
+    max-width: 550px; /* SIGNIFICANT CHANGE: Increased max-width for a larger form */
+    text-align: center; /* Ensures content like images/icons within form are centered */
+    box-sizing: border-box; /* Include padding in total width */
 }
 
+/* Responsive adjustment for smaller screens */
+@media (max-width: 576px) {
+    .form-container {
+        padding: 40px 30px; /* Adjusted padding on smaller screens */
+        border-radius: 12px; /* Slightly less rounded */
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Lighter shadow on mobile */
+        margin: 20px; /* Add some margin around the form on small screens */
+    }
+
+    body {
+        padding: 0; /* Remove body padding when form has margin */
+    }
+}
+
+
+/* Form Heading */
 .form-container h2 {
-  font-size: 28px; /* Slightly larger font for a wider form */
-  font-weight: 600;
-  margin-bottom: 35px;
-  color: #333;
-  text-align: left;
+    font-size: 2.5rem; /* Larger, more impactful heading */
+    font-weight: 700; /* Bolder */
+    margin-bottom: 40px; /* More space below heading */
+    color: #1a202c; /* Even darker for stronger contrast */
+    text-align: center; /* Center the form title */
+    letter-spacing: -0.03em; /* Subtle modern typography touch */
+    line-height: 1.2;
 }
 
+/* Specific form styles (login-form class from JSX) */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Increased consistent spacing between form groups */
+}
+
+/* Form Group (Label + Input) */
 .form-group {
-  text-align: left;
-  margin-bottom: 25px; /* Increased margin for better spacing */
+    text-align: left; /* Align label and input to the left */
+    margin-bottom: 0; /* Reset margin-bottom as gap handles it */
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: 500;
-  color: #555;
-  font-size: 16px;
+    display: block;
+    margin-bottom: 10px; /* Slightly more margin below label */
+    font-weight: 600; /* Bolder labels */
+    color: #2d3748; /* Darker, more prominent label color */
+    font-size: 1rem; /* Slightly larger, more refined label font */
 }
 
 .form-group input {
-  width: 100%;
-  padding: 15px 18px; /* Increased padding */
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 17px;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
+    width: 100%;
+    padding: 16px 18px; /* Increased padding for larger input fields */
+    border: 1px solid #cbd5e0; /* Softer, slightly cooler light grey border */
+    border-radius: 10px; /* Consistent border-radius */
+    font-size: 1.05rem; /* Slightly larger font size for inputs */
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    color: #333; /* Darker text color for input */
+}
+
+.form-group input::placeholder {
+    color: #a0aec0; /* Softer placeholder color */
+    font-weight: 400;
 }
 
 .form-group input:focus {
-  outline: none;
-  border-color: #008cba;
-  box-shadow: 0 0 0 2px rgba(0, 140, 186, 0.2);
+    outline: none;
+    border-color: #007bff; /* Primary brand blue on focus */
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.3); /* More prominent, primary-colored shadow */
 }
 
+/* Error Message Styles */
+.error-message {
+    color: #dc3545; /* Standard red for errors */
+    font-size: 0.95rem; /* Slightly larger error font */
+    margin-bottom: 20px; /* More space above inputs */
+    text-align: center; /* Center error message */
+    background-color: #ffebeb; /* Light red background for error message */
+    border: 1px solid #dc3545;
+    padding: 12px 18px; /* More padding for error message */
+    border-radius: 6px;
+    line-height: 1.4;
+}
+
+/* Form Actions (Forgot Password and Login Button Group) */
+.form-actions {
+    display: flex;
+    justify-content: space-between; /* Space out the link and button */
+    align-items: center; /* Vertically align them */
+    margin-top: 10px; /* Adjust top margin */
+    margin-bottom: 30px; /* More space below this group */
+}
+
+/* Forgot Password Link */
 .forgot-password-link {
-  text-align: right;
-  margin-top: -15px;
-  margin-bottom: 25px;
+    text-align: right; /* Default align */
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .forgot-password-link a {
-  color: #008cba;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 500;
+    color: #007bff; /* Primary blue for links */
+    text-decoration: none;
+    font-size: 0.95rem; /* Slightly larger font size */
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
 
 .forgot-password-link a:hover {
-  text-decoration: underline;
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: underline;
 }
 
+/* Login Button */
 .login-button {
-  width: 100%;
-  padding: 18px; /* Increased padding for a larger button */
-  background-color: #008cba;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 20px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
-  margin-top: 15px;
+    width: auto; /* Allow flexbox to size it, not full width */
+    flex-grow: 1; /* Allow it to take up available space in form-actions */
+    padding: 18px 35px; /* Generous padding for a comfortable click and larger size */
+    background-color: #007bff; /* Primary blue */
+    color: #fff;
+    border: none;
+    border-radius: 10px; /* Consistent border-radius */
+    font-size: 1.2rem; /* Larger font for the main action button */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.28); /* More pronounced blue shadow */
+    min-width: 150px; /* Ensure button doesn't get too small */
 }
 
 .login-button:hover {
-  background-color: #007799;
+    background-color: #0056b3;
+    transform: translateY(-3px); /* More pronounced lift on hover */
+    box-shadow: 0 10px 25px rgba(0, 123, 255, 0.4); /* Stronger shadow on hover */
 }
 
 .login-button:active {
-  transform: scale(0.99);
+    transform: translateY(0); /* Reset transform on active */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.25); /* Smaller shadow on active */
 }
 
-.switch-text {
-  font-size: 15px;
-  color: #777;
-  margin-top: 40px;
+.login-button:disabled {
+    background-color: #a0aec0; /* Lighter grey when disabled */
+    cursor: not-allowed;
+    box-shadow: none; /* No shadow when disabled */
+    transform: none; /* No transform when disabled */
 }
 
-.switch-text a {
-  color: #008cba;
-  text-decoration: none;
-  font-weight: 600;
+/* Switch Account Text (e.g., Sign Up, Switch to Admin Login) */
+.switch-account-text { /* New class name from JSX */
+    font-size: 0.95rem; /* Slightly larger switch text */
+    color: #6c757d; /* Softer grey text */
+    margin-top: 20px; /* More space between form and switch options */
 }
 
-.switch-text a:hover {
-  text-decoration: underline;
+.switch-account-text .switch-link { /* New class name for links within switch text */
+    color: #007bff; /* Primary blue for switch links */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.switch-account-text .switch-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments for Login Button and Form Actions */
+@media (max-width: 480px) {
+    .form-actions {
+        flex-direction: column; /* Stack button and link on very small screens */
+        align-items: stretch; /* Stretch items to full width */
+        gap: 20px; /* More space between stacked items */
+        margin-bottom: 25px;
+    }
+
+    .login-button {
+        width: 100%; /* Full width button on small screens */
+        min-width: unset;
+        padding: 16px 25px; /* Adjusted padding for mobile button */
+        font-size: 1.1rem;
+    }
+
+    .forgot-password-link {
+        text-align: center; /* Center link when stacked */
+    }
+
+    .switch-account-text {
+        font-size: 0.9rem;
+        margin-top: 15px; /* Adjust margin for mobile */
+    }
 }

@@ -13,6 +13,10 @@ import UserDashboard from './components/pages/User/UserDashbord.jsx';
 import AdminDashboard from "./components/pages/Admin/AdminDashbord.jsx";
 import UpdateProgress from "./components/pages/UpdateProgress/UpdateProgress.jsx";
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import PrivacyPolicy from './components/pages/TermPolicy/PrivacyPolicy';
+import TermsConditions from './components/pages/TermPolicy/TermsConditions';
+import ContactUs from './components/pages/TermPolicy/ContactUs';
+
 // import './App.css';
 
 function AppContent() {
@@ -30,25 +34,32 @@ function AppContent() {
       {!hideLayout && <Header />}
       <main className={mainContentClassName}>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Hero />
-                <Features />
-              </>
-            }
-          />
-          <Route path="/user-login" element={<UserLogin />} />
-          <Route path="/admin-login" element={<AdminLogin />} />
-          <Route path="/create-account" element={<CreateAccount />} />
-          <Route path="/progress-entry" element={<ProgressEntryPage />} />
-          <Route path="/user-dashboard" element={<UserDashboard />} />
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          <Route path="/progress-update" element={<UpdateProgress />} />
+  <Route
+    path="/"
+    element={
+      <>
+        <Hero />
+        <Features />
+      </>
+    }
+  />
+  <Route path="/user-login" element={<UserLogin />} />
+  <Route path="/admin-login" element={<AdminLogin />} />
+  <Route path="/create-account" element={<CreateAccount />} />
+  <Route path="/progress-entry" element={<ProgressEntryPage />} />
+  <Route path="/user-dashboard" element={<UserDashboard />} />
+  <Route path="/admin-dashboard" element={<AdminDashboard />} />
+  <Route path="/progress-update" element={<UpdateProgress />} />
+  <Route path="/contact" element={<Contact />} /> 
+  <Route path="/privacy" element={<PrivacyPolicy />} />
+  <Route path="/terms" element={<TermsConditions />} />
+  <Route path="/contact-us" element={<ContactUs />} />
+  <Route path="/contact-us" element={<ContactUs />} />
 
-          <Route path="/contact" element={<Contact />} /> 
-        </Routes>
+  
+
+</Routes>
+
       </main>
       {!hideLayout && <Footer />}
     </div>

@@ -1,181 +1,440 @@
-/* General Body Styles */
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f0f4f8;
-  color: #333;
+    margin: 0;
+    padding: 0; /* Ensure no default body padding */
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif; /* Prioritize 'Inter' for modern look, with good fallbacks */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f0f4f8; /* A soft, calming light blue-grey background */
+    color: #333;
+    min-height: 100vh; /* Ensures body stretches to full viewport height */
+    display: flex; /* Use flexbox for overall page layout */
+    flex-direction: column; /* Stacks content and footer vertically */
 }
 
-/* App Container */
+/* --- App Container - Main content wrapper, removing the 'card' look --- */
 .app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows it to take up available vertical space */
+    width: 100%; /* Take full width */
+    max-width: none; /* Crucial: Remove max-width for full screen horizontal stretch */
+    padding: 0; /* Remove padding from here; individual sections will have their own */
+    background-color: transparent; /* Make app-container transparent to show body background */
+    border: none; /* Remove border */
+    border-radius: 0; /* Remove border-radius */
+    box-shadow: none; /* Remove box-shadow */
 }
 
+/* --- Main Content Area - Where individual sections (hero, features) reside --- */
 .main-content {
-  flex: 1;
-  background-color: #ffffff;
-  border: 2px solid #aed6f1;
-  border-radius: 12px;
-  padding: 20px 40px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  position: relative;
+    flex-grow: 1; /* Allow content to grow and fill space */
+    background-color: #ffffff; /* Sections within main-content will typically have white backgrounds */
+    padding: 0; /* Sections inside main-content will handle their own padding */
+    position: relative; /* Keep this for absolute positioned elements like floating button */
 }
 
-/* Header */
+/* --- Header --- */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e0e0e0;
+    background-color: #ffffff; /* White background for the header */
+    padding: 20px 60px; /* More generous horizontal padding for wider screens */
+    border-bottom: 1px solid #e9ecef; /* Lighter, more subtle border */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+    position: sticky; /* Makes header stick to the top */
+    top: 0;
+    z-index: 1000; /* Ensures header stays on top of other content */
 }
 
 .logo {
-  font-size: 1.2rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  color: #2c3e50;
+    font-size: 1.5rem; /* Larger, more prominent logo */
+    font-weight: 700; /* Bolder */
+    display: flex;
+    align-items: center;
+    color: #212529; /* Darker, more prominent logo color */
+    letter-spacing: -0.03em; /* Slightly tighter for a modern feel */
+}
+
+.logo .icon { /* Assuming a logo icon */
+    margin-right: 10px; /* More space for the icon */
+    font-size: 1.8em; /* Larger icon */
+    color: #007bff; /* Primary brand color */
 }
 
 .nav-links a {
-  margin-left: 25px;
-  text-decoration: none;
-  color: #555;
-  font-weight: 500;
-  transition: color 0.3s;
+    margin-left: 35px; /* More space between nav items */
+    text-decoration: none;
+    color: #495057; /* Softer, darker grey for links */
+    font-weight: 500;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Smooth transition */
 }
 
 .nav-links a:hover {
-  color: #007bff;
+    color: #007bff; /* Primary blue on hover */
+    transform: translateY(-2px); /* Subtle lift effect */
 }
 
-/* Hero Section */
+/* --- Hero Section - Wider and more engaging --- */
 .hero-section {
-  text-align: center;
-  padding: 40px 0;
+    text-align: center;
+    padding: 100px 40px; /* More vertical padding for prominence */
+    background-color: #ffffff; /* Keep background white for clarity */
+    display: flex; /* Use flex for content alignment */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px; /* Ensure a minimum height for the hero section */
 }
 
 .hero-section h1 {
-  font-size: 2.5rem;
-  color: #2c3e50;
-  margin-bottom: 10px;
+    font-size: 4rem; /* Much larger, impactful heading */
+    color: #212529; /* Stronger contrast */
+    margin-bottom: 20px; /* More space below heading */
+    line-height: 1.1;
+    letter-spacing: -0.05em; /* Tighter letter spacing for large titles */
+    max-width: 900px; /* Constrain heading width for readability on very wide screens */
 }
 
 .hero-section p {
-  font-size: 1.1rem;
-  color: #7f8c8d;
-  margin-bottom: 30px;
+    font-size: 1.35rem; /* Larger, more readable tagline */
+    color: #6c757d; /* Softer grey for descriptive text */
+    margin-bottom: 50px; /* More space below tagline */
+    max-width: 750px; /* Constrain tagline width for readability */
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
 }
 
 .hero-image {
-  max-width: 400px;
-  height: auto;
-  margin-bottom: 30px;
+    max-width: 600px; /* Larger image */
+    height: auto;
+    margin-bottom: 60px; /* More space below image */
+    display: block; /* Ensures proper margin application */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons { /* Container for buttons */
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    justify-content: center;
+    gap: 25px; /* More space between buttons */
+    margin-top: 40px; /* More space above buttons */
 }
 
 .hero-buttons .btn {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  margin: 0 10px;
-  border-radius: 25px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 16px 35px; /* Larger padding for more clickable area */
+    border-radius: 10px; /* Slightly more rounded for a modern block feel */
+    font-size: 1.1rem; /* Slightly larger font */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.25); /* More pronounced blue shadow */
+    text-decoration: none; /* Ensure no underline on buttons if they are <a> tags */
+    display: inline-flex; /* Use flex to align content inside button, e.g., if icons are added */
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-buttons .btn:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
+    background-color: #0056b3;
+    transform: translateY(-5px); /* More pronounced lift */
+    box-shadow: 0 10px 25px rgba(0, 123, 255, 0.4); /* Enhanced shadow on hover */
 }
 
-/* Features Section */
+.hero-buttons .btn:active {
+    transform: translateY(-2px); /* Slight sink on click */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.25);
+}
+
+/* Specific button styles for clarity and branding */
+.hero-buttons .btn.user-login {
+    background-color: #007bff; /* Primary blue */
+}
+.hero-buttons .btn.admin-login {
+    background-color: #6c757d; /* Muted grey for secondary action */
+}
+.hero-buttons .btn.admin-login:hover {
+    background-color: #5a6268;
+    box-shadow: 0 10px 25px rgba(108, 117, 125, 0.3);
+}
+.hero-buttons .btn.create-account {
+    background-color: #28a745; /* Green for positive action */
+}
+.hero-buttons .btn.create-account:hover {
+    background-color: #218838;
+    box-shadow: 0 10px 25px rgba(40, 167, 69, 0.3);
+}
+
+
+/* --- Features Section - Responsive Grid --- */
 .features-section {
-  display: flex;
-  justify-content: space-around;
-  padding: 50px 0;
-  gap: 20px;
+    background-color: #f8f9fa; /* Light grey background for this section to break up white */
+    padding: 80px 40px; /* Generous vertical padding */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Auto-fit columns, min 280px */
+    gap: 35px; /* More space between cards */
+    max-width: 1200px; /* Max width for the grid to prevent too wide columns */
+    margin: 0 auto; /* Center the grid within the section */
 }
 
 .feature-card {
-  background-color: #fff;
-  border: 1px solid #e0e6ed;
-  border-radius: 12px;
-  padding: 30px;
-  text-align: center;
-  width: 30%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+    border: 1px solid #e0e6ed;
+    border-radius: 12px; /* Consistent border-radius */
+    padding: 40px; /* More padding inside cards */
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Stronger, softer shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-10px); /* More pronounced lift on hover */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Stronger, deeper shadow on hover */
 }
 
 .feature-icon {
-  color: #007bff;
-  margin-bottom: 20px;
+    font-size: 4rem; /* Even larger icons */
+    color: #007bff;
+    margin-bottom: 25px; /* More space below icon */
 }
 
 .feature-card h3 {
-  font-size: 1.4rem;
-  color: #2c3e50;
-  margin-bottom: 10px;
+    font-size: 1.6rem; /* Larger card title */
+    color: #212529;
+    margin-bottom: 15px; /* More space below title */
 }
 
 .feature-card p {
-  color: #7f8c8d;
-  font-size: 1rem;
-  line-height: 1.5;
+    color: #555; /* Darker grey for better readability */
+    font-size: 1.05rem; /* Slightly larger text */
+    line-height: 1.6; /* Improved line height */
 }
 
-/* Floating Button */
+/* --- Floating Button (e.g., "Auto Designer") --- */
 .autodesigner-btn {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 500;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: absolute; /* Keep it absolute relative to .main-content */
+    bottom: 40px; /* More distance from bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff; /* White background */
+    border: 1px solid #dcdcdc; /* Lighter border */
+    border-radius: 30px; /* More rounded, pill shape */
+    padding: 15px 30px; /* More padding */
+    cursor: pointer;
+    font-size: 1rem; /* Slightly larger font */
+    font-weight: 500;
+    color: #495057; /* Softer text color */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12); /* Clearer shadow */
+    transition: all 0.3s ease;
+    text-decoration: none; /* Ensure no underline */
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
-/* Footer */
+.autodesigner-btn:hover {
+    background-color: #f0f2f5; /* Subtle background change on hover */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    transform: translateX(-50%) translateY(-3px); /* Slightly more lift on hover */
+}
+
+/* --- Footer --- */
 .footer {
-  text-align: center;
-  padding-top: 20px;
-  font-size: 0.9rem;
-  color: #666;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+    text-align: center;
+    padding: 30px 60px; /* More padding */
+    font-size: 0.95rem; /* Slightly larger font */
+    color: #6c757d; /* Softer grey */
+    background-color: #ffffff; /* Consistent with header and main content sections */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Take full width */
+    max-width: none; /* Remove max-width for full horizontal stretch */
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03); /* Subtle shadow on top */
+    margin-top: auto; /* Pushes the footer to the bottom when body is flex column */
 }
 
 .footer-links a {
-  margin-left: 20px;
-  color: #666;
-  text-decoration: none;
+    margin-left: 30px; /* More space */
+    color: #495057; /* Darker link color */
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .footer-links a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
+    color: #007bff; /* Primary blue on hover */
+    transform: translateY(-1px);
+}
+
+/* --- Responsive Adjustments for Mobile and Tablet --- */
+
+/* Mobile (up to 768px) */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Stack logo and nav links */
+        align-items: flex-start; /* Align to start */
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        margin-top: 15px;
+        display: flex;
+        flex-wrap: wrap; /* Allow nav links to wrap */
+        justify-content: center; /* Center nav links if they wrap */
+        width: 100%;
+    }
+
+    .nav-links a {
+        margin: 5px 12px; /* Adjust margin for stacked links */
+    }
+
+    .hero-section {
+        padding: 60px 20px;
+        min-height: unset; /* Allow height to adjust naturally on mobile */
+    }
+
+    .hero-section h1 {
+        font-size: 2.8rem; /* Adjust for mobile readability */
+        margin-bottom: 15px;
+    }
+
+    .hero-section p {
+        font-size: 1.05rem;
+        margin-bottom: 30px;
+    }
+
+    .hero-image {
+        max-width: 350px; /* Smaller image on mobile */
+        margin-bottom: 40px;
+    }
+
+    .hero-buttons {
+        gap: 15px; /* Smaller gap for stacked buttons */
+        margin-top: 25px;
+    }
+
+    .hero-buttons .btn {
+        padding: 12px 25px; /* Smaller buttons on mobile */
+        font-size: 0.95rem;
+        min-width: unset; /* Allow width to be flexible */
+        flex-basis: 48%; /* Try to get two buttons per row */
+    }
+
+    .features-section {
+        padding: 50px 20px;
+        grid-template-columns: 1fr; /* Stack cards on mobile */
+        gap: 30px;
+    }
+
+    .feature-card {
+        padding: 30px;
+    }
+
+    .feature-icon {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .footer {
+        flex-direction: column; /* Stack footer content */
+        padding: 20px 20px;
+    }
+
+    .footer-links {
+        margin-top: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footer-links a {
+        margin: 5px 12px;
+    }
+
+    .autodesigner-btn {
+        bottom: 25px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablet (769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .header,
+    .hero-section,
+    .features-section,
+    .footer {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .hero-section h1 {
+        font-size: 3.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1.15rem;
+    }
+
+    .hero-image {
+        max-width: 500px;
+    }
+
+    .features-section {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
+
+    .feature-card {
+        padding: 35px;
+    }
+}
+
+/* Desktop (Large Screens - 1200px and up) */
+@media (min-width: 1200px) {
+    .header,
+    .footer {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+    .hero-section {
+        padding: 120px 80px; /* Even more vertical padding for large screens */
+    }
+    .hero-section h1 {
+        font-size: 4.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1.5rem;
+    }
+
+    .hero-image {
+        max-width: 700px; /* Larger image on very large screens */
+    }
+
+    .features-section {
+        max-width: 1400px; /* Allow feature grid to expand more */
+        gap: 40px;
+        padding: 100px 80px;
+    }
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.section {
+  padding: 100px 20px;
+  min-height: 100vh;
 }

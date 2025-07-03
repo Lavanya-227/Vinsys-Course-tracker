@@ -1,14 +1,14 @@
 import React from 'react';
-// import '../../../App.css';
-import './homePage.css'
+import { Link } from 'react-router-dom'; // ✅ import Link
+
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>&copy; 2023 Course Pr...</p>
+      <p>&copy; 2025 Course Progress Tracker.</p>
       <div className="footer-links">
-        <a href="#privacy">Privacy Policy</a>
-        <a href="#terms">Terms of Service</a>
-        <a href="#contact-us">Contact Us</a>
+        <Link to="/privacy">Privacy Policy</Link>
+        <Link to="/terms">Terms of Service</Link>
+        <Link to="/contact-us">Contact Us</Link>
       </div>
     </footer>
   );
